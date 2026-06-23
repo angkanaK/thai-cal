@@ -35,6 +35,6 @@ function calc4() {
     const pay = Math.round(price * 0.4) + extraGov
 
     const result = document.getElementById("result4")
-    result.innerHTML = "คุณต้องจ่ายทั้งหมด " + pay + " บาท | รัฐจ่ายให้ " + (govNormal > 200 ? 200 : govNormal) + " บาท"
+    result.innerHTML = "คุณต้องเองจ่ายทั้งหมด " + pay + " บาท | รัฐจ่ายให้ " + (govNormal > 200 ? 200 : govNormal) + " บาท"
     result.style.display = "block"
 }
