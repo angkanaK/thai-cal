@@ -40,27 +40,45 @@ function calc4() {
 }
 
 function calc5() {
-    const price = document.getElementById("price5").value
-    const people = document.getElementById("people5").value
+    const price = Number(document.getElementById("price5").value)
+    const people = Number(document.getElementById("people5").value)
 
-    let remaining = Number(price)  // แปลงเป็นตัวเลขก่อน
-    let output = ""  // เก็บข้อความผลลัพธ์
+    let remaining = price
+    let output = ""
 
     for (let i = 1; i <= people; i++) {
+        const rights = Number(document.getElementById("person" + i).value)
+
         if (remaining <= 0) {
             output += "คนที่ " + i + " → ไม่ต้องจ่าย<br>"
-        } else if (remaining >= 333) {
-            output += "คนที่ " + i + " → รัฐจ่าย 200 บาท | จ่ายเอง 133 บาท<br>"
-            remaining -= 333
         } else {
-            const pay = Math.round(remaining * 0.4)
-            const gov = remaining - pay
-            output += "คนที่ " + i + " → รัฐจ่าย " + gov + " บาท | จ่ายเอง " + pay + " บาท<br>"
-            remaining = 0
+            const govCanPay = Math.min(rights, Math.round(remaining * 0.6))
+            const total = Math.round(govCanPay / 0.6)
+            const pay = total - govCanPay
+            remaining -= total
+            if (remaining < 0) remaining = 0
+            output += "คนที่ " + i + " → รัฐจ่าย " + govCanPay + " บาท | จ่ายเอง " + pay + " บาท<br>"
         }
+    }
+
+    if (remaining > 0) {
+        output += "<br>⚠️ สิทธิ์รัฐไม่พอ ต้องออกเองเพิ่ม " + remaining + " บาท"
     }
 
     const result = document.getElementById("result5")
     result.style.display = "block"
     result.innerHTML = output
+}
+
+function generateInputs() {
+    const people = document.getElementById("people5").value
+    const container = document.getElementById("people-inputs")
+    container.innerHTML = ""
+
+    for (let i = 1; i <= people; i++) {
+        container.innerHTML += `
+            <label>คนที่ ${i} สิทธิ์คงเหลือ (บาท)</label>
+            <input type="number" id="person${i}" placeholder="เช่น 200" min="0">
+        `
+    }
 }
