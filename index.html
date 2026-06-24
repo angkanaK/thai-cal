@@ -15,7 +15,6 @@
         <h1>🧮 คำนวณไทยช่วยไทยพลัส</h1>
         <p class="subtitle">รัฐจ่าย 60% | คุณจ่าย 40% | วงเงินสูงสุด 200 บาท/วัน</p>
 
-        <!-- กล่องที่ 1 -->
         <div class="card">
             <h2>ของราคาเท่าไหร่ ต้องจ่ายเองเท่าไหร่?</h2>
             <label>ราคาสินค้า (บาท)</label>
@@ -24,7 +23,6 @@
             <div id="result1" class="result"></div>
         </div>
 
-        <!-- กล่องที่ 2 -->
         <div class="card">
             <h2>ต้องเติมเงินเท่าไหร่ให้พอดีกับสิทธิรัฐ?</h2>
             <label>มูลค่าสิทธิคงเหลือ (บาท)</label>
@@ -33,7 +31,6 @@
             <div id="result2" class="result"></div>
         </div>
 
-        <!-- กล่องที่ 3 -->
         <div class="card">
             <h2>คำนวนยอดรวมที่สามารถใช้ได้วันนี้</h2>
             <label>มูลค่าสิทธิคงเหลือ (บาท)</label>
@@ -42,7 +39,6 @@
             <div id="result3" class="result"></div>
         </div>
 
-        <!-- กล่องที่ 4 -->
         <div class="card">
             <h2>ของแพงเกินสิทธิของรัฐต่อวัน(200 บาท) ต้องออกเองเพิ่มเท่าไหร่?</h2>
             <label>ราคาสินค้า (บาท)</label>
@@ -50,7 +46,18 @@
             <button onclick="calc4()">คำนวณ</button>
             <div id="result4" class="result"></div>
         </div>
+
+        <div class="card">
+            <h2>ซื้อของหลายคน แบ่งจ่ายคนละเท่าไหร่?</h2>
+            <label>ราคาสินค้า (บาท)</label>
+            <input type="number" id="price5" placeholder="เช่น 700" min="0">
+            <label>จำนวนคนที่มีสิทธิ์</label>
+            <input type="number" id="people5" placeholder="เช่น 3" min="1">
+            <button onclick="calc5()">คำนวณ</button>
+            <div id="result5" class="result"></div>
+        </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
